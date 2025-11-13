@@ -13,8 +13,13 @@ provider "github" {
 }
 
 locals {
-  lower_id = lower(var.student_id)
+  # remove surrounding whitespace/newlines, then lowercase
+  lower_id = lower(trimspace(var.student_id))
+
+  # Keep only groups of a-z0-9 characters, then join them with "-".
   cleaned_id = join("-", regexall("[a-z0-9]+", local.lower_id))
+
+  # final repo name using cleaned id
   repo_name_final = "${var.repo_name}-${local.cleaned_id}"
 }
 
