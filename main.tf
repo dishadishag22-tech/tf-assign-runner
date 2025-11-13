@@ -18,6 +18,7 @@ locals {
   repo_name_final = "${var.repo_name}-${local.cleaned_id}"
 }
 
+
 resource "github_repository" "assignment_repo" {
   name        = local.repo_name_final
   description = "Terraform assignment - Student: ${var.student_name} | ID: ${var.student_id}"
