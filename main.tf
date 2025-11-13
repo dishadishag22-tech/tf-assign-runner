@@ -27,6 +27,7 @@ resource "github_repository" "assignment_repo" {
   has_wiki    = false
   has_projects = false
   allow_merge_commit = true
-  topics = ["terraform", "assignment", "${var.student_id}"]
+ topics = ["terraform", "assignment", local.cleaned_id]
+
 }
 
